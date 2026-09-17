@@ -1,6 +1,7 @@
 import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import TechStack from "./components/TechStack/TechStack";
+import Projects from "./components/Projects/Projects";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <Navbar />
       <Hero />
       <TechStack />
+      <Projects />
     </main>
   );
 }
