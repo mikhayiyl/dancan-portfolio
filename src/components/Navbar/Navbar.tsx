@@ -53,12 +53,12 @@ function Navbar() {
           <div className="flex flex-col gap-1.5">
             <span
               className={`block h-px w-5 bg-[#F5F5F5] transition-transform ${
-                isOpen ? "translate-y-[3px] rotate-45" : ""
+                isOpen ? "translate-y-0.75 rotate-45" : ""
               }`}
             />
             <span
               className={`block h-px w-5 bg-[#F5F5F5] transition-transform ${
-                isOpen ? "-translate-y-[3px] -rotate-45" : ""
+                isOpen ? "-translate-y-0.75 -rotate-45" : ""
               }`}
             />
           </div>
