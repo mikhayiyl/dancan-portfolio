@@ -2,6 +2,8 @@ import Hero from "./components/Hero/Hero";
 import Navbar from "./components/Navbar/Navbar";
 import TechStack from "./components/TechStack/TechStack";
 import Projects from "./components/Projects/Projects";
+import Skills from "./components/Skills/Skills";
+import About from "./components/About/About";
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <Hero />
       <TechStack />
       <Projects />
+      <Skills />
+      <About />
     </main>
   );
 }
