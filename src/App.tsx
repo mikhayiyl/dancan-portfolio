@@ -6,6 +6,8 @@ import Skills from "./components/Skills/Skills";
 import About from "./components/About/About";
 import Experience from "./components/Experience/Experience";
 import Process from "./components/Process/Process";
+import Contact from "./components/Contact/Contact";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <About />
       <Experience />
       <Process />
+      <Contact />
+      <Footer />
     </main>
   );
 }
