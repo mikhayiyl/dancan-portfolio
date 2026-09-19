@@ -1,45 +1,68 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { name: "Work", href: "#work" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Contact", href: "#contact" },
-];
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
+  const { pathname, hash } = useLocation();
+  const isHome = pathname === "/";
   const [isOpen, setIsOpen] = useState(false);
+
+  // Smooth scroll when hash changes OR when navigating home
+  useEffect(() => {
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [hash]);
+
+  const navLinks = [
+    { name: "Work", href: isHome ? "#work" : "/#work" },
+    { name: "Skills", href: isHome ? "#skills" : "/#skills" },
+    { name: "About", href: isHome ? "#about" : "/#about" },
+    { name: "Contact", href: isHome ? "#contact" : "/#contact" },
+  ];
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setIsOpen(false);
+  };
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-[#24282C]/60 bg-[#08090A]/70 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <a
-          href="#"
+
+        <Link
+          to="/"
           className="text-xl font-semibold tracking-tight text-[#F5F5F5]"
+          onClick={handleLogoClick}
         >
           Dancan<span className="text-[#6366F1]">.</span>
-        </a>
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className="text-sm text-[#9CA3AF] transition-colors hover:text-[#F5F5F5]"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
 
-          <a
-            href="#contact"
+          <Link
+            to="/#contact"
             className="rounded-full border border-[#24282C] bg-[#111315] px-4 py-2 text-sm font-medium text-[#F5F5F5] transition-all hover:border-[#6366F1] hover:bg-[#171A1D]"
           >
             Let&apos;s talk <span className="ml-1">→</span>
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -76,23 +99,23 @@ function Navbar() {
           >
             <div className="flex flex-col">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsOpen(false)}
                   className="border-b border-[#24282C] px-3 py-4 text-sm text-[#9CA3AF] transition-colors last:border-0 hover:text-[#F5F5F5]"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
 
-              <a
-                href="#contact"
+              <Link
+                to={isHome ? "#contact" : "/#contact"}
                 onClick={() => setIsOpen(false)}
                 className="mt-3 rounded-xl bg-[#6366F1] px-4 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-[#818CF8]"
               >
                 Let&apos;s talk →
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
