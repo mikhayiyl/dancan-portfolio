@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { projects } from "../../data/projects";
 
 function Projects() {
@@ -148,19 +149,22 @@ function Projects() {
                 </div>
               </div>
 
-              <div className="flex gap-3">
-                <a
-                  href={featuredProject.liveUrl}
+              {/* Featured Project Actions */}
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  to={`/projects/${featuredProject.slug}`}
                   className="rounded-full bg-[#F5F5F5] px-5 py-2.5 text-sm font-medium text-[#08090A] transition-transform duration-300 hover:scale-105"
                 >
-                  Live Demo ↗
-                </a>
+                  View Project →
+                </Link>
 
                 <a
-                  href={featuredProject.githubUrl}
+                  href={featuredProject.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-[#24282C] px-5 py-2.5 text-sm text-[#F5F5F5] transition-colors duration-300 hover:border-[#6366F1]/60"
                 >
-                  GitHub ↗
+                  Live Demo ↗
                 </a>
               </div>
             </div>
@@ -170,61 +174,80 @@ function Projects() {
         {/* Other Projects */}
         <div className="mt-8 grid gap-8 md:grid-cols-2">
           {otherProjects.map((project, index) => (
-            <motion.article
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -4 }}
-              className="group overflow-hidden rounded-3xl border border-[#24282C] bg-[#111315] transition-shadow duration-500 hover:shadow-xl hover:shadow-[#6366F1]/5"
+            <Link
+              key={project.slug}
+              to={`/projects/${project.slug}`}
+              className="block"
             >
-              {/* Preview */}
-              <div className="relative aspect-16/10 overflow-hidden border-b border-[#24282C] bg-[#08090A]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#6366F1_0%,transparent_45%)] opacity-5 transition-transform duration-700 group-hover:scale-125" />
+              <motion.article
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -4 }}
+                className="group overflow-hidden rounded-3xl border border-[#24282C] bg-[#111315] transition-shadow duration-500 hover:shadow-xl hover:shadow-[#6366F1]/5"
+              >
+                {/* Preview */}
+                <div className="relative aspect-16/10 overflow-hidden border-b border-[#24282C] bg-[#08090A]">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,#6366F1_0%,transparent_45%)] opacity-5 transition-transform duration-700 group-hover:scale-125" />
 
-                <div className="absolute inset-8 rounded-2xl border border-[#24282C] bg-[#111315] transition-transform duration-700 group-hover:scale-[1.03]">
-                  <div className="flex h-8 items-center gap-1.5 border-b border-[#24282C] px-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#24282C]" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#24282C]" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#24282C]" />
-                  </div>
+                  <div className="absolute inset-8 rounded-2xl border border-[#24282C] bg-[#111315] transition-transform duration-700 group-hover:scale-[1.03]">
+                    <div className="flex h-8 items-center gap-1.5 border-b border-[#24282C] px-3">
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#24282C]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#24282C]" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-[#24282C]" />
+                    </div>
 
-                  <div className="p-5">
-                    <div className="h-3 w-24 rounded bg-[#24282C]" />
-                    <div className="mt-3 h-5 w-36 rounded bg-[#F5F5F5]/10" />
+                    <div className="p-5">
+                      <div className="h-3 w-24 rounded bg-[#24282C]" />
+                      <div className="mt-3 h-5 w-36 rounded bg-[#F5F5F5]/10" />
 
-                    <div className="mt-8 grid grid-cols-3 gap-2">
-                      <div className="h-16 rounded-lg bg-[#08090A]" />
-                      <div className="h-16 rounded-lg bg-[#08090A]" />
-                      <div className="h-16 rounded-lg bg-[#08090A]" />
+                      <div className="mt-8 grid grid-cols-3 gap-2">
+                        <div className="h-16 rounded-lg bg-[#08090A]" />
+                        <div className="h-16 rounded-lg bg-[#08090A]" />
+                        <div className="h-16 rounded-lg bg-[#08090A]" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Info */}
-              <div className="p-6">
-                <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#6B7280]">
-                  {project.category}
-                </p>
+                <div className="p-6">
+                  <p className="text-xs font-medium uppercase tracking-[0.2em] text-[#6B7280]">
+                    {project.category}
+                  </p>
 
-                <h3 className="mt-3 text-xl font-semibold">{project.title}</h3>
+                  <h3 className="mt-3 text-xl font-semibold">
+                    {project.title}
+                  </h3>
 
-                <p className="mt-3 text-sm leading-6 text-[#9CA3AF]">
-                  {project.description}
-                </p>
+                  <p className="mt-3 text-sm leading-6 text-[#9CA3AF]">
+                    {project.description}
+                  </p>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {project.technologies.map((technology) => (
-                    <span key={technology} className="text-xs text-[#6B7280]">
-                      {technology}
-                    </span>
-                  ))}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {project.technologies.map((technology) => (
+                      <span key={technology} className="text-xs text-[#6B7280]">
+                        {technology}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="mt-6 text-sm font-medium text-[#F5F5F5] transition-colors group-hover:text-[#6366F1]">
+                    View Project →
+                  </div>
                 </div>
-              </div>
-            </motion.article>
+              </motion.article>
+            </Link>
           ))}
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <Link
+            to="/projects"
+            className="rounded-full border border-[#24282C] px-6 py-3 text-sm font-medium transition-colors hover:border-[#6366F1]/60"
+          >
+            View All Projects →
+          </Link>
         </div>
       </div>
     </section>
