@@ -44,7 +44,9 @@ function ProjectDetails() {
         <img
           src={project.image}
           alt={project.title}
-          className="mt-12 w-full rounded-3xl border border-[#24282C]"
+          decoding="async"
+          fetchPriority="high"
+          className="mt-12 w-full object-cover rounded-3xl border border-[#24282C]"
         />
 
         <div className="mt-10 flex flex-wrap gap-3">
