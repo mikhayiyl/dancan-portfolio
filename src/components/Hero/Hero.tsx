@@ -1,20 +1,57 @@
 import { motion } from "framer-motion";
+import {
+  SiReact,
+  SiTypescript,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiFirebase,
+} from "react-icons/si";
+import { TbDatabase } from "react-icons/tb";
+
+const technologies = [
+  { name: "React", icon: SiReact },
+  { name: "TypeScript", icon: SiTypescript },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "Node.js", icon: SiNodedotjs },
+  { name: "Firebase", icon: SiFirebase },
+  { name: "SQL", icon: TbDatabase },
+];
+const revenuePoints = "0,75 22,58 44,68 66,38 88,52 110,25 132,42 154,12";
 
 function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden pt-24">
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-16 px-6 py-20 lg:grid-cols-2">
+    <section className="relative overflow-hidden pt-24">
+      {/* Background Glow */}
+      <div className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-125 w-125 -translate-x-1/2 rounded-full bg-[#6366F1]/8 blur-[120px]" />
+
+      {/* Background Grid */}
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-20">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(#24282C 1px, transparent 1px),
+              linear-gradient(90deg, #24282C 1px, transparent 1px)
+            `,
+            backgroundSize: "64px 64px",
+            maskImage:
+              "radial-gradient(circle at center, black 0%, transparent 72%)",
+          }}
+        />
+      </div>
+
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-16 sm:py-20 lg:grid-cols-2 lg:gap-8 lg:py-24">
         {/* Left Content */}
-        <div>
+        <div className="relative z-10">
           {/* Availability */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6 flex items-center gap-2 text-sm text-[#9CA3AF]"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#6366F1]/40 bg-[#6366F1]/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#9CA3AF]"
           >
-            <span className="h-2 w-2 rounded-full bg-green-400" />
-            Available for work
+            <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]" />
+            Available for opportunities
           </motion.div>
 
           {/* Heading */}
@@ -22,7 +59,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
+            className="max-w-3xl text-5xl font-semibold leading-[1.02] tracking-[-0.04em] text-[#F5F5F5] sm:text-6xl lg:text-7xl"
           >
             Full-Stack
             <br />
@@ -41,23 +78,22 @@ function Hero() {
             business problems.
           </motion.p>
 
-          {/* Tech Stack */}
+          {/* Technology Icons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 flex flex-wrap gap-2"
+            className="mt-7 flex flex-wrap items-center gap-4"
           >
-            {["React", "TypeScript", "Next.js", "Node.js", "Firebase"].map(
-              (tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-[#24282C] bg-[#111315] px-3 py-1.5 text-xs text-[#9CA3AF]"
-                >
-                  {tech}
-                </span>
-              ),
-            )}
+            {technologies.map(({ name, icon: Icon }) => (
+              <div
+                key={name}
+                title={name}
+                className="group flex h-9 w-9 items-center justify-center rounded-lg border border-[#24282C] bg-[#111315] text-[#9CA3AF] transition-all duration-300 hover:-translate-y-1 hover:border-[#6366F1]/50 hover:bg-[#171A1D] hover:text-[#F5F5F5]"
+              >
+                <Icon className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" />
+              </div>
+            ))}
           </motion.div>
 
           {/* Buttons */}
@@ -65,91 +101,177 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-8 flex flex-wrap gap-4"
+            className="mt-9 flex flex-wrap gap-3"
           >
             <a
               href="#work"
-              className="rounded-full bg-[#F5F5F5] px-6 py-3 text-sm font-medium text-[#08090A] transition-transform duration-300 hover:scale-105"
+              className="rounded-full bg-[#F5F5F5] px-6 py-3 text-sm font-medium text-[#08090A] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
             >
-              View my work →
+              View my work <span className="ml-1">→</span>
             </a>
 
             <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-[#24282C] bg-[#111315] px-6 py-3 text-sm font-medium text-[#F5F5F5] transition-all duration-300 hover:border-[#6366F1]/60 hover:bg-[#171A1D]"
+              href="mailto:duhnycan@gmail.com"
+              className="rounded-full border border-[#24282C] bg-[#111315] px-6 py-3 text-sm font-medium text-[#F5F5F5] transition-all duration-300 hover:-translate-y-0.5 hover:border-[#6366F1]/60 hover:bg-[#171A1D]"
             >
-              GitHub ↗
+              Contact me <span className="ml-1">↗</span>
             </a>
           </motion.div>
         </div>
 
-        {/* Right Visual */}
-        <div className="relative hidden lg:block">
-          <div className="relative mx-auto aspect-square max-w-lg">
-            {/* Glow */}
-            <div className="absolute inset-10 rounded-full bg-[#6366F1]/10 blur-3xl" />
+        {/* Right Analytics Visual */}
+        <div className="relative hidden min-h-120 lg:block">
+          {/* Main Glow */}
+          <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6366F1]/10 blur-[90px]" />
 
-            {/* Placeholder Product Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute inset-8 rounded-2xl border border-[#24282C] bg-[#111315] p-5 shadow-2xl"
-            >
-              <div className="flex items-center justify-between border-b border-[#24282C] pb-4">
-                <div>
-                  <p className="text-xs text-[#6B7280]">Analytics Dashboard</p>
-                  <p className="mt-1 text-sm font-medium">Revenue Overview</p>
+          {/* Revenue Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="absolute left-[5%] top-[7%] z-20 w-[62%] rounded-2xl border border-[#24282C] bg-[#111315]/95 p-5 shadow-2xl backdrop-blur-xl"
+          >
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-[10px] text-[#6B7280]">Total Revenue</p>
+                <p className="mt-1 text-xl font-semibold text-[#F5F5F5]">
+                  $84,250
+                </p>
+              </div>
+
+              <span className="rounded-full bg-green-400/10 px-2 py-1 text-[9px] text-green-400">
+                +18.4%
+              </span>
+            </div>
+
+            {/* Line Chart */}
+            <div className="mt-5 h-28">
+              <svg
+                viewBox="0 0 154 90"
+                className="h-full w-full overflow-visible"
+                preserveAspectRatio="none"
+              >
+                <defs>
+                  <linearGradient
+                    id="revenueGradient"
+                    x1="0"
+                    y1="0"
+                    x2="0"
+                    y2="1"
+                  >
+                    <stop offset="0%" stopColor="#6366F1" stopOpacity="0.25" />
+                    <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+
+                <polygon
+                  points={`0,90 ${revenuePoints} 154,90`}
+                  fill="url(#revenueGradient)"
+                />
+
+                <polyline
+                  points={revenuePoints}
+                  fill="none"
+                  stroke="#818CF8"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+
+            <div className="mt-2 flex justify-between text-[9px] text-[#6B7280]">
+              <span>Jan</span>
+              <span>Feb</span>
+              <span>Mar</span>
+              <span>Apr</span>
+              <span>May</span>
+              <span>Jun</span>
+            </div>
+          </motion.div>
+
+          {/* Sales Overview */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.45 }}
+            className="absolute right-[2%] top-[20%] z-10 w-[48%] rounded-2xl border border-[#24282C] bg-[#111315]/95 p-4 shadow-2xl backdrop-blur-xl"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-[9px] text-[#6B7280]">Analytics</p>
+                <p className="mt-1 text-xs font-medium text-[#F5F5F5]">
+                  Sales Overview
+                </p>
+              </div>
+
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400" />
+            </div>
+
+            <div className="mt-5 flex h-28 items-end gap-2">
+              {[42, 68, 50, 78, 58, 88, 65, 94].map((height, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ height: 0 }}
+                  animate={{ height: `${height}%` }}
+                  transition={{
+                    duration: 0.7,
+                    delay: 0.65 + index * 0.05,
+                  }}
+                  className="flex-1 rounded-t-sm bg-[#6366F1]/60 transition-colors hover:bg-[#818CF8]"
+                />
+              ))}
+            </div>
+
+            <div className="mt-3 flex justify-between text-[8px] text-[#6B7280]">
+              <span>W1</span>
+              <span>W2</span>
+              <span>W3</span>
+              <span>W4</span>
+            </div>
+          </motion.div>
+
+          {/* Top Products / Progress Card */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.55 }}
+            className="absolute bottom-[8%] left-[25%] z-30 w-[42%] rounded-2xl border border-[#24282C] bg-[#111315]/95 p-5 shadow-2xl backdrop-blur-xl"
+          >
+            <p className="text-[9px] text-[#6B7280]">Top Products</p>
+
+            <div className="mt-4 flex items-center gap-4">
+              {/* Progress Ring */}
+              <div
+                className="relative h-20 w-20 shrink-0 rounded-full"
+                style={{
+                  background:
+                    "conic-gradient(#6366F1 0deg 259deg, #24282C 259deg 360deg)",
+                }}
+              >
+                <div className="absolute inset-2 flex items-center justify-center rounded-full bg-[#111315]">
+                  <div className="text-center">
+                    <p className="text-sm font-semibold text-[#F5F5F5]">72%</p>
+                    <p className="text-[7px] text-[#6B7280]">Growth</p>
+                  </div>
                 </div>
-
-                <div className="h-2 w-2 rounded-full bg-green-400" />
               </div>
 
-              {/* Fake chart */}
-              <div className="mt-8 flex h-48 items-end gap-3">
-                {[35, 55, 42, 70, 58, 82, 65, 92].map((height, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ height: 0 }}
-                    animate={{ height: `${height}%` }}
-                    transition={{
-                      duration: 0.6,
-                      delay: 0.6 + index * 0.05,
-                    }}
-                    className="flex-1 rounded-t-md bg-[#6366F1]/60"
-                  />
-                ))}
+              <div>
+                <p className="text-xs font-medium text-[#F5F5F5]">Apparel</p>
+                <p className="mt-1 text-[9px] leading-4 text-[#6B7280]">
+                  Highest performing
+                  <br />
+                  product category
+                </p>
               </div>
+            </div>
+          </motion.div>
 
-              <div className="mt-6 flex items-end justify-between">
-                <div>
-                  <p className="text-xs text-[#6B7280]">Total Revenue</p>
-                  <p className="mt-1 text-2xl font-semibold">$48,290</p>
-                </div>
-
-                <span className="text-xs text-green-400">+18.4%</span>
-              </div>
-            </motion.div>
-          </div>
+          {/* Decorative Nodes */}
+          <div className="absolute right-[8%] bottom-[12%] h-2 w-2 rounded-full bg-[#6366F1] shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
+          <div className="absolute left-[12%] bottom-[28%] h-1.5 w-1.5 rounded-full bg-[#818CF8]/70" />
         </div>
-      </div>
-
-      {/* Background Grid */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-30">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(#24282C 1px, transparent 1px),
-              linear-gradient(90deg, #24282C 1px, transparent 1px)
-            `,
-            backgroundSize: "64px 64px",
-            maskImage:
-              "radial-gradient(circle at center, black 0%, transparent 70%)",
-          }}
-        />
       </div>
     </section>
   );
