@@ -16,16 +16,17 @@ const technologies = [
   { name: "Firebase", icon: SiFirebase },
   { name: "SQL", icon: TbDatabase },
 ];
+
 const revenuePoints = "0,75 22,58 44,68 66,38 88,52 110,25 132,42 154,12";
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden pt-24">
+    <section className="relative overflow-hidden border-b border-[#24282C]/50 pt-24">
       {/* Background Glow */}
-      <div className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-125 w-125 -translate-x-1/2 rounded-full bg-[#6366F1]/8 blur-[120px]" />
+      <div className="pointer-events-none absolute left-1/2 top-1/4 -z-10 h-125 w-125 -translate-x-1/2 rounded-full bg-[#6366F1]/6 blur-[130px]" />
 
       {/* Background Grid */}
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-20">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-15">
         <div
           className="absolute inset-0"
           style={{
@@ -40,7 +41,7 @@ function Hero() {
         />
       </div>
 
-      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-16 sm:py-20 lg:grid-cols-2 lg:gap-8 lg:py-24">
+      <div className="mx-auto grid w-full max-w-7xl items-center gap-12 px-6 py-14 sm:py-18 lg:grid-cols-2 lg:gap-8 lg:py-20">
         {/* Left Content */}
         <div className="relative z-10">
           {/* Availability */}
@@ -48,9 +49,9 @@ function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#6366F1]/40 bg-[#6366F1]/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-[#9CA3AF]"
+            className="mb-5 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[#6B7280]"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]" />
+            <span className="h-1.5 w-1.5 rounded-full bg-green-400 shadow-[0_0_7px_rgba(74,222,128,0.6)]" />
             Available for opportunities
           </motion.div>
 
@@ -71,7 +72,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 max-w-xl text-base leading-7 text-[#9CA3AF] sm:text-lg"
+            className="mt-5 max-w-xl text-base leading-7 text-[#9CA3AF] sm:mt-6 sm:text-lg"
           >
             I build modern web applications, SaaS products, and digital
             experiences that are fast, responsive, and built to solve real
@@ -83,13 +84,13 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-7 flex flex-wrap items-center gap-4"
+            className="mt-6 flex flex-wrap items-center gap-3"
           >
             {technologies.map(({ name, icon: Icon }) => (
               <div
                 key={name}
                 title={name}
-                className="group flex h-9 w-9 items-center justify-center rounded-lg border border-[#24282C] bg-[#111315] text-[#9CA3AF] transition-all duration-300 hover:-translate-y-1 hover:border-[#6366F1]/50 hover:bg-[#171A1D] hover:text-[#F5F5F5]"
+                className="group flex h-9 w-9 items-center justify-center rounded-lg border border-[#24282C] bg-[#111315] text-[#9CA3AF] transition-all duration-300 hover:-translate-y-1 hover:border-[#6366F1]/50 hover:bg-[#171A1D] hover:text-[#818CF8]"
               >
                 <Icon className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" />
               </div>
@@ -101,7 +102,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-9 flex flex-wrap gap-3"
+            className="mt-8 flex flex-wrap gap-3"
           >
             <a
               href="#work"
@@ -122,13 +123,26 @@ function Hero() {
         {/* Right Analytics Visual */}
         <div className="relative hidden min-h-120 lg:block">
           {/* Main Glow */}
-          <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6366F1]/10 blur-[90px]" />
+          <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#6366F1]/8 blur-[100px]" />
 
           {/* Revenue Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -5, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.7, delay: 0.3 },
+              scale: { duration: 0.7, delay: 0.3 },
+              y: {
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              },
+            }}
             className="absolute left-[5%] top-[7%] z-20 w-[62%] rounded-2xl border border-[#24282C] bg-[#111315]/95 p-5 shadow-2xl backdrop-blur-xl"
           >
             <div className="flex items-start justify-between">
@@ -193,8 +207,21 @@ function Hero() {
           {/* Sales Overview */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, 4, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.7, delay: 0.45 },
+              scale: { duration: 0.7, delay: 0.45 },
+              y: {
+                duration: 5.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.5,
+              },
+            }}
             className="absolute right-[2%] top-[20%] z-10 w-[48%] rounded-2xl border border-[#24282C] bg-[#111315]/95 p-4 shadow-2xl backdrop-blur-xl"
           >
             <div className="flex items-center justify-between">
@@ -234,8 +261,21 @@ function Hero() {
           {/* Top Products / Progress Card */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55 }}
+            animate={{
+              opacity: 1,
+              scale: 1,
+              y: [0, -4, 0],
+            }}
+            transition={{
+              opacity: { duration: 0.7, delay: 0.55 },
+              scale: { duration: 0.7, delay: 0.55 },
+              y: {
+                duration: 6.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2,
+              },
+            }}
             className="absolute bottom-[8%] left-[25%] z-30 w-[42%] rounded-2xl border border-[#24282C] bg-[#111315]/95 p-5 shadow-2xl backdrop-blur-xl"
           >
             <p className="text-[9px] text-[#6B7280]">Top Products</p>
@@ -269,10 +309,13 @@ function Hero() {
           </motion.div>
 
           {/* Decorative Nodes */}
-          <div className="absolute right-[8%] bottom-[12%] h-2 w-2 rounded-full bg-[#6366F1] shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
-          <div className="absolute left-[12%] bottom-[28%] h-1.5 w-1.5 rounded-full bg-[#818CF8]/70" />
+          <div className="absolute bottom-[12%] right-[8%] h-2 w-2 rounded-full bg-[#6366F1] shadow-[0_0_15px_rgba(99,102,241,0.8)]" />
+          <div className="absolute bottom-[28%] left-[12%] h-1.5 w-1.5 rounded-full bg-[#818CF8]/70" />
         </div>
       </div>
+
+      {/* Subtle transition into next section */}
+      <div className="pointer-events-none absolute bottom-0 left-1/2 h-px w-1/2 -translate-x-1/2 bg-linear-to-r from-transparent via-[#24282C] to-transparent" />
     </section>
   );
 }
