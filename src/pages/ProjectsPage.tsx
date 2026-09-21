@@ -1,9 +1,14 @@
+import SEO from "../components/SEO/SEO";
 import { projects } from "../data/projects";
 import { Link } from "react-router-dom";
 
 function ProjectsPage() {
   return (
     <main className="min-h-screen bg-[#08090A] py-32">
+      <SEO
+        title="Projects"
+        description="Explore web applications, SaaS products, and digital experiences built by Dancan."
+      />
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-16 max-w-2xl">
           <p className="mb-3 text-sm font-medium text-[#6366F1]">My Work</p>

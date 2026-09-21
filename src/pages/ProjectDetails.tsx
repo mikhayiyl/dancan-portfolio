@@ -1,5 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
+import SEO from "../components/SEO/SEO";
 
 function ProjectDetails() {
   const { slug } = useParams();
@@ -22,6 +23,8 @@ function ProjectDetails() {
 
   return (
     <main className="min-h-screen bg-[#08090A] py-32">
+      <SEO title={project.title} description={project.description} />
+
       <div className="mx-auto max-w-5xl px-6">
         <Link to="/projects" className="text-sm text-[#9CA3AF]">
           ← Back to projects
