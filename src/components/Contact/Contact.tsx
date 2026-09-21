@@ -7,6 +7,7 @@ const Contact = () => {
       className="relative overflow-hidden border-t border-[#24282C] px-6 py-24 sm:py-32"
     >
       <div className="pointer-events-none absolute left-1/2 top-0 h-64 w-64 -translate-x-1/2 rounded-full bg-[#6366F1]/10 blur-3xl" />
+
       <div className="mx-auto max-w-4xl text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +37,9 @@ const Contact = () => {
             </a>
 
             <a
-              href="#"
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center border border-[#24282C] px-6 py-3 text-sm font-medium text-[#F5F5F5] transition-all duration-300 hover:border-[#6366F1]/60 hover:bg-[#171A1D]"
             >
               GitHub
@@ -44,7 +47,9 @@ const Contact = () => {
             </a>
 
             <a
-              href="#"
+              href="https://www.linkedin.com/in/dancan-muthini-b051a7193/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center border border-[#24282C] px-6 py-3 text-sm font-medium text-[#F5F5F5] transition-all duration-300 hover:border-[#6366F1]/60 hover:bg-[#171A1D]"
             >
               LinkedIn
