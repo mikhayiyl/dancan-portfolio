@@ -2,6 +2,15 @@ import { motion } from "framer-motion";
 import { skillGroups } from "../../data/Skills";
 
 function Skills() {
+  const exploringSkills = [
+    "Prisma",
+    "Next.js",
+    "SQL",
+    "React Native",
+    "Microsoft AL",
+    "Cloud",
+  ];
+
   return (
     <section id="skills" className="border-t border-[#24282C]/60 py-32">
       <div className="mx-auto max-w-7xl px-6">
@@ -64,27 +73,28 @@ function Skills() {
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-medium">Currently exploring</p>
-
               <p className="mt-1 text-sm text-[#6B7280]">
                 Expanding my toolkit beyond the frontend.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {[
-                "Prisma",
-                "Next.js",
-                "SQL",
-                "React Native",
-                "Microsoft AL",
-                "Cloud",
-              ].map((skill) => (
-                <span
+              {exploringSkills.map((skill, i) => (
+                <motion.span
                   key={skill}
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: i * 0.1,
+                    type: "spring",
+                    stiffness: 250,
+                    damping: 18,
+                  }}
                   className="rounded-full border border-[#24282C] px-3 py-1.5 text-xs text-[#9CA3AF]"
                 >
                   {skill}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
